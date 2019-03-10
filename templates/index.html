@@ -1,0 +1,452 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PeachGrove Farm</title>
+    <link rel="stylesheet" type="text/css" href=" {{url_for('static' ,filename = 'css/main.css')}}">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/bootstrap.min.css')}}">
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="{{url_for('home')}}">PeachGrove Farm</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <li class="app-search">
+          <input class="app-search__input" type="search" placeholder="Search">
+          <button class="app-search__button"><i class="fa fa-search"></i></button>
+        </li>
+        <!--Notification Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+          <ul class="app-notification dropdown-menu dropdown-menu-right">
+            <li class="app-notification__title">You have no new notifications.</li>
+            <div class="app-notification__content">
+            
+            </div>
+            <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+          </ul>
+        </li>
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="{{url_for('logout')}}"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <div>
+          {% if 'Name','Surname' in session: %}
+          <p class="app-sidebar__user-name">{{ session['Name']+" "+session['Surname'] }}</p>
+          <p class="app-sidebar__user-designation"></p>
+          {% else: %}
+          <p class="app-sidebar__user-name">You are not logged in</p>
+          <p class="app-sidebar__user-designation"></p>
+          {% endif %}
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item active" href="{{url_for('home')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">New</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" data-toggle="modal" href="#addcrop"><i class="icon fa fa-circle-o"></i> Crop</a></li>
+            <li><a class="treeview-item" data-toggle="modal" href="#Activity"><i class="icon fa fa-circle-o"></i> Activity</a></li>
+          </ul>
+        </li>
+        <li><a class="app-menu__item" href="{{url_for('calender')}}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Calendar</span></a></li>
+        <li><a class="app-menu__item" href="{{url_for('gallery')}}"><i class="app-menu__icon glyphicon glyphicon-picture"></i><span class="app-menu__label">Gallery</span></a></li>
+        <li><a class="app-menu__item" href="{{url_for('records')}}"><i class="app-menu__icon fa fa-files-o"></i><span class="app-menu__label">Farming Records</span></a></li>
+         <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Farm Register</span></a></li>
+         <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Farm Equipment</span></a></li>
+
+        
+      </ul>
+    </aside>
+     <!-- Modal  for adding crops -->
+     <div class="modal fade" id="addcrop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">New crop</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <form action="/addcrop" method="POST">
+
+ <!--- <div class="tab-content">
+    <div id="menu" class="tab-pane fade  in active">-->
+      <div id="menu">
+        <div class="form-group"> 
+      <label for="full_name_id" class="control-label">crop</label>
+        <input type="text" class="form-control" id="full_name_id" name="crop" placeholder="" required="">
+      </div>  
+
+    <div class="form-group">
+     <label for="street1_id" class="control-label">Variety</label>
+      <input type="text" class="form-control" id="street1_id" name="Variety" placeholder="deere" required="">
+    </div>          
+                
+    <div class="form-group"> 
+      <label for="street2_id" class="control-label">Location</label>
+      <input type="text" class="form-control" id="street2_id" name="Location" placeholder="seed company" required="">
+    </div>  
+
+      <div class="form-group">            
+      <label for="city_id" class="control-label">Nursed</label>
+      <select class="form-control form-control-lg" name="nurse" id="option">
+        <option value="yes">yes</option>
+        <option value="no">No</option>
+      </select>
+      <br><br>
+    </div>
+   
+    <div class="modal-footer">
+        <a class="btn btn-success" onclick="validateme()" href="#">More</a>
+    </div>
+  </div>
+
+   <!--- </div>-->
+
+   <div id="menu1" style="display: none;">
+      <div class="form-group">
+        <label for="city_id" class="control-label">Date Sown</label>
+        <input type="Date" class="form-control" name="Sown" placeholder="01/02/1945" required="">
+      </div>
+
+    <div class="form-group">
+      <label for="city_id" class="control-label">Quantity</label>
+      <input type="text" class="form-control"  name="Quantity" required="">
+    </div>
+
+    <div class="form-group">
+      <label for="city_id" class="control-label">Germinated</label>
+      <input type="Date" class="form-control" name="Germinated" required="">
+    </div>
+ <!--- </div>
+
+   
+
+  !---<div id="menu2" class="tab-pane fade">-->
+
+      <div class="form-group" id="transplanted"> 
+          <label for="city_id" class="control-label">Transplanted</label>
+          <input type="Date" class="form-control" name="transplanted">
+        </div>
+
+    <div class="form-group"> 
+      <label for="city_id" class="control-label">Germination Rate</label>
+      <input type="text" class="form-control" name="Germination_rate" required="">
+    </div>
+
+    <div class="form-group">
+      <label for="city_id" class="control-label">comment</label>
+      <textarea class="form-control" id="city_id" name="comment"  required="">
+        </textarea>
+    </div>
+   
+<!--
+    </div>
+   
+
+          <div id="menu3" class="tab-pane fade">-->
+              <h3>Please double check details before saving</h3><br>
+            <div class="modal-footer">  
+            <a class="btn btn-success" onclick="less()" href="#">Less</a>
+              <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+              <button class="btn btn-success" type="submit">Save changes</button>                
+            </div>
+          </div>
+        </div>
+          </div>
+
+
+          </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal -->
+       <!-- Modal  for adding Activities -->
+      <div class="modal fade" id="Activity" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Activity</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             
+            </div>
+            <div class="modal-body">
+              <form action="/Activity" method="POST">
+
+                <div id="1">
+
+                 <div class="form-group"> <!-- Full Name -->
+                    <label for="crop" class="control-label">crop</label>
+                    <select class="form-control form-control-lg" name="crop">
+                      {% for crop in crops: %}
+                      <option value="{{crop.crop_name}}">{{crop.crop_name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>  
+
+                <div class="form-group"> <!-- Street 1 -->
+                  <label for="street1_id" class="control-label">Date</label>
+                  <input type="date" class="form-control form-control" id="street1_id" name="activity_date" placeholder="deere" required="">
+                </div>          
+                
+                  <div class="form-group"> <!-- Street 2 -->
+                    <label for="street2_id" class="control-label">Activity</label>
+                    <select class="form-control form-control-lg" id="option1" name="Activity">
+                      <option value="watering">Watering</option>
+                      <option value="weeding">Weeding</option>
+                      <option value="fertilisation">Fertilisation</option>
+                      <option value="spraying">Spraying</option>
+                      <option value="other">Other</option>
+                    </select>     
+                  </div> 
+
+               
+                <div class="modal-footer">
+                    <a class="btn btn-success" onclick="validate()" href="#">More</a>
+                </div>
+              </div>
+                <div id="2" style="display: none;">
+
+                  
+                 <div class="form-group" id="watering"> <!-- Full Name -->
+                  <label for="crop" class="control-label">Mode</label>
+                  <select class="form-control form-control-lg" name="watering_mode">
+                    <option value="Rainfall">Rainfall</option>
+                    <option value="Irrigation">Irrigation<option>
+                  </select>
+                </div> 
+                
+                <div class="form-group" id="watering1"> 
+                  <label for="street1_id" class="control-label">Amount</label>
+                  <input type="text" class="form-control"  name="watering_amount" placeholder="in ml">
+                </div>  
+
+                <div class="form-group" id="weeding1"> 
+                  <label for="crop" class="control-label">Mode</label>
+                  <select class="form-control form-control-lg" name="weeding_mode">
+                    <option value="Hoeing">Hoeing</option>
+                    <option value="Plucking">Plucking<option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <label class="control-label">Specify if other</label>
+                  <input type="text" class="form-control" name="other_weeding" placeholder="">
+                </div> 
+
+                <div class="form-group" id="fertilisation1">
+                  <label for="street1_id" class="control-label">Fertiliser</label>
+                  <input type="text" class="form-control" name="Fertiliser" placeholder="in  ml">
+                </div>
+
+                <div class="form-group" id="spraying">
+                  <label  class="control-label">Spraying</label>
+                  <input type="text" class="form-control" name="spraying">
+                </div>
+
+                <div class="form-group" id="fertilisation2"> 
+                  <label for="street1_id" class="control-label">Application Rate</label>
+                  <input type="text" class="form-control" id="street1_id" name="rate">
+                </div>
+
+                <div class="form-group" id="other1"> 
+                    <label for="street1_id" class="control-label">Prunning</label>
+                  <select class="form-control" name="other">
+                    <option value="Prunning">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+
+                  <label for="street1_id" class="control-label">Thinning</label>
+                  <select class="form-control" name="other1">
+                    <option value="Thinning">Yes</option>
+                    <option value="No">No</option>
+                    </select>
+                   
+                  </div>
+
+
+
+                  <div class="modal-footer">
+                      <a class="btn btn-success" onclick="prev()" href="#1">Prev</a>
+                      <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                      <button class="btn btn-success" type="submit">Save changes</button>      
+                    </div>
+                
+                  </div>
+            </div>
+          
+          </form>
+          </div>
+        </div>
+      </div>
+      <!-- modal -->
+      {% block content%}
+    <main class="app-content" style="background: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('../static/images/img.jpg') no-repeat; background-size:cover; background-position: 50% 50%; display:flex; justify-content: center">
+     
+
+       
+      <h1 style="align-self:center;color:seashell; font-size: 3em; font-weight: bold">Welcome to <span style="color: rgba(83, 241, 83, 0.705)">PeachGrove Farm</span> </h1>
+
+      </main>
+      {% endblock%}
+    <!-- Essential javascripts for application to work-->
+   
+    <script src="{{url_for('static' ,filename = 'js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename = 'js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename = 'js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename= 'js/main.js')}}"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="{{url_for('static',filename = 'js/plugins/pace.min.js')}}"></script>
+
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="{{url_for('static',filename= 'js/plugins/chart.js')}}"></script>
+    <script type="text/javascript">
+    function less(){
+      document.getElementById('menu').style.display = 'contents';
+      document.getElementById('menu1').style.display = 'none';
+    }
+    
+    function validateme()
+    {
+      var option = document.getElementById('option').value;
+      
+      if (option == 'no')
+      {
+        document.getElementById('transplanted').style.display = 'none';
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('menu1').style.display = 'contents';
+      }
+      else{
+        document.getElementById('transplanted').style.display = 'contents';
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('menu1').style.display = 'contents';
+      }
+    }
+    function prev(){
+      document.getElementById('2').style.display = 'none';
+      document.getElementById('1').style.display = 'contents';
+    }
+    function validate(){
+      var option1 = document.getElementById('option1').value;
+      if(option1 == 'watering')
+      {
+        document.getElementById('1').style.display = 'none';
+        document.getElementById('2').style.display = 'contents';
+        document.getElementById('watering1').style.display = 'contents';
+        document.getElementById('watering').style.display = 'contents';
+        document.getElementById('weeding1').style.display = 'none';
+        document.getElementById('spraying').style.display = 'none';
+        document.getElementById('fertilisation1').style.display = 'none';
+        document.getElementById('fertilisation2').style.display = 'none';
+        document.getElementById('other1').style.display = 'none';
+        document.getElementById('other2').style.display = 'none';
+      }
+      else if(option1 == 'weeding'){
+        document.getElementById('1').style.display = 'none';
+        document.getElementById('2').style.display = 'contents';
+        document.getElementById('weeding1').style.display = 'contents';
+        document.getElementById('watering').style.display = 'none';
+        document.getElementById('watering1').style.display = 'none';
+        document.getElementById('fertilisation1').style.display = 'none';
+        document.getElementById('fertilisation2').style.display = 'none';
+        document.getElementById('other1').style.display = 'none';
+        document.getElementById('other2').style.display = 'none';
+        document.getElementById('spraying').style.display = 'none';
+      }
+      else if(option1 == 'fertilisation'){
+        document.getElementById('1').style.display = 'none';
+        document.getElementById('2').style.display = 'contents';
+        document.getElementById('weeding1').style.display = 'none';
+        document.getElementById('fertilisation1').style.display = 'contents';
+        document.getElementById('fertilisation2').style.display = 'contents';
+        document.getElementById('watering').style.display = 'none';
+        document.getElementById('watering1').style.display = 'none';
+        document.getElementById('other1').style.display = 'none';
+        document.getElementById('spraying').style.display = 'none';
+      }
+      else if(option1 == 'spraying'){
+        document.getElementById('watering').style.display = 'none';
+        document.getElementById('watering1').style.display = 'none';
+        document.getElementById('other1').style.display = 'none';
+        document.getElementById('weeding1').style.display = 'none';
+        document.getElementById('1').style.display = 'none';
+        document.getElementById('fertilisation1').style.display = 'none';
+        document.getElementById('2').style.display = 'contents';
+        document.getElementById('spraying').style.display = 'contents';
+        document.getElementById('fertilisation2').style.display = 'contents';
+      }
+      else if(option1 == 'other'){
+        document.getElementById('1').style.display = 'none';
+        document.getElementById('2').style.display = 'contents';
+        document.getElementById('other1').style.display = 'contents';
+        document.getElementById('watering').style.display = 'none';
+        document.getElementById('watering1').style.display = 'none';
+        document.getElementById('weeding1').style.display = 'none';
+        document.getElementById('fertilisation1').style.display = 'none';
+        document.getElementById('fertilisation2').style.display = 'none';
+        document.getElementById('spraying').style.display = 'none';
+      }
+      else{
+        alert(option1);
+      }
+    }
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+      
+      	$('#external-events .fc-event').each(function() {
+      
+      		// store data so the calendar knows to render an event upon drop
+      		$(this).data('event', {
+      			title: $.trim($(this).text()), // use the element's text as the event title
+      			stick: true // maintain when user navigates (see docs on the renderEvent method)
+      		});
+      
+      		// make the event draggable using jQuery UI
+      		$(this).draggable({
+      			zIndex: 999,
+      			revert: true,      // will cause the event to go back to its
+      			revertDuration: 0  //  original position after the drag
+      		});
+      
+      	});
+      
+      	$('#calendar').fullCalendar({
+      		header: {
+      			left: 'prev,next today',
+      			center: 'title',
+      			right: 'month,agendaWeek,agendaDay'
+      		},
+      		editable: true,
+      		droppable: true, // this allows things to be dropped onto the calendar
+      		drop: function() {
+      			// is the "remove after drop" checkbox checked?
+      			if ($('#drop-remove').is(':checked')) {
+      				// if so, remove the element from the "Draggable Events" list
+      				$(this).remove();
+      			}
+      		}
+      	});
+      
+      
+      });
+    </script>
+      <script type="text/javascript" src="{{url_for('static',filename ='js/plugins/jquery.dataTables.min.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static',filename ='js/plugins/dataTables.bootstrap.min.js')}}"></script>
+      <script type="text/javascript">$('#sampleTable').DataTable();</script>
+      <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/moment.min.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/jquery-ui.custom.min.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/fullcalendar.min.js')}}"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+{% extends 'index.html'%}
+      {% block content%}
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-calendar"></i> Calendar</h1>
+          <p>Full Calander page for managing events</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="#">Calendar</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile row">
+            <div class="col-md-3">
+              <div id="external-events">
+                <h4 class="mb-4">Draggable Events</h4>
+                <div class="fc-event">My Event 1</div>
+                <div class="fc-event">My Event 2</div>
+                <div class="fc-event">My Event 3</div>
+                <div class="fc-event">My Event 4</div>
+                <div class="fc-event">My Event 5</div>
+                <p class="animated-checkbox mt-20">
+                  <label>
+                    <input id="drop-remove" type="checkbox"><span class="label-text">Remove after drop</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div id="calendar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal  for adding crops -->
+                <div class="modal fade" id="addcrop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">New crop</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{url_for('addcrop')}}" method="POST">
+                          <div class="form-group"> <!-- Full Name -->
+                <label for="full_name_id" class="control-label">crop</label>
+                <input type="text" class="form-control" id="full_name_id" name="crop" placeholder="" required="">
+              </div>  
+
+              <div class="form-group"> <!-- Street 1 -->
+                <label for="street1_id" class="control-label">Type</label>
+                <input type="text" class="form-control" id="street1_id" name="type1" placeholder="deere" required="">
+              </div>          
+                          
+              <div class="form-group"> <!-- Street 2 -->
+                <label for="street2_id" class="control-label">Dealer</label>
+                <input type="text" class="form-control" id="street2_id" name="dealer" placeholder="seed company" required="">
+              </div>  
+
+                <div class="form-group"> <!-- City-->
+                <label for="city_id" class="control-label">Quantity</label><p id="1"></p>
+                <input type="text" class="form-control" id="email_id" name="email" placeholder="..kg" required="">
+              </div>
+
+                <div class="form-group"> <!-- City-->
+                <label for="city_id" class="control-label">Date of Purchase</label>
+                <input type="Date" class="form-control"  name="date1" required="">
+              </div>
+
+                <div class="form-group"> <!-- City-->
+                <label for="city_id" class="control-label">Date Sown</label>
+                <input type="Date" class="form-control" id="phone_id" name="phone" placeholder="01/02/1945" required="">
+              </div>
+
+              <div class="form-group">
+                <label for="city_id" class="control-label">comment</label>
+                <input type="text" class="form-control" id="city_id" name="comment" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum." required="">
+              </div>
+                               
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                        <button class="btn btn-success" type="submit">Save changes</button>
+
+                    </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+                 <!-- Modal  for adding crops -->
+                <div class="modal fade" id="Activity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">New Activity</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{url_for('Activity')}}" method="POST">
+                          <div class="form-group"> <!-- Full Name -->
+                <label for="full_name_id" class="control-label">crop</label>
+                <select class="form-control">
+                  <option>crop1</option>
+                  <option>crop2</option>
+                </select>
+                
+              </div>  
+
+              <div class="form-group"> <!-- Street 1 -->
+                <label for="street1_id" class="control-label">Date</label>
+                <input type="date" class="form-control" id="street1_id" name="activity_date" placeholder="deere" required="">
+              </div>          
+                          
+              <div class="form-group"> <!-- Street 2 -->
+                <label for="street2_id" class="control-label">Activity</label>
+                <input type="text" class="form-control" id="street2_id" name="dealer" placeholder="" required="">
+              </div>  
+
+              <div class="form-group">
+                <label for="city_id" class="control-label">comment</label>
+                <input type="text" class="form-control" id="city_id" name="comment" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum." required="">
+              </div>
+                               
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                        <button class="btn btn-success" type="submit">Save changes</button>
+
+                    </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+    </main>
+    <!-- Essential javascripts for application to work-->
+    {% endblock %}
+    

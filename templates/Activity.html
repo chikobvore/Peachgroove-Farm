@@ -1,0 +1,58 @@
+{% extends 'index.html'%}
+      {% block content%}
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list">PeachGroove Farm</i></h1>
+          <p>Farming records</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item active"><a href="#">Farm Records</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="row">
+                  {% for record in records: %}
+                  <div class="col-md-4" style="padding: 40px; border: 2px solid black; border-radius: 10px;">
+                  {% for k,v in record.items(): %}
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>{{k}} .................</label>
+                    </div>
+                    <div class="col-md-6">
+                      <label>{{v}}</label>
+                    </div>
+                    <hr>
+                  </div>
+
+              {% endfor %}
+            </div>
+              {% endfor %}
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+            <div class="tile">
+              <div class="tile-body">
+                  <center style="padding: 30px;">
+                  <a class="btn btn-success" href="/watering">Watering</a>
+                  <a class="btn btn-success" href="/weeding">Weeding</a>
+                  <a class="btn btn-success" href="/fertilisation">Fertilisation</a>
+                  <a class="btn btn-success" href="/spraying">Spraying</a>
+                  <a class="btn btn-success" href="/other">Other</a>
+                  </center>
+              </div>
+              </div>
+            </div>
+          </div>
+    </main>
+    {% endblock %}

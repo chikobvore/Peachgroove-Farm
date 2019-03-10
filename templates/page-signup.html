@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'css/font-awesome.min.css')}}">
+    <title>Peach Groove Farm</title>
+  </head>
+  <body>
+    <section class="material-half-bg">
+      <div class="cover"></div>
+    </section>
+    <section class="login-content">
+      <div class="logo">
+        <h1>Peach Groove</h1>
+      </div>
+      <div class="login-box" style="height: 650px; width: 400px;">
+        <form class="login-form" action="/signup" method="POST" onsubmit="validate()">
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+          <p id="p3"></p>
+          <div class="form-group">
+                <label class="control-label">NAME</label>
+                <input class="form-control" type="text" name="name" placeholder="First Name" required= '' autofocus>
+              </div>
+              <div class="form-group">
+                    <label class="control-label">SURNAME</label>
+                    <input class="form-control" type="text" name="surname" required = '' placeholder="Surname" autofocus>
+                  </div>
+          <div class="form-group">
+            <label class="control-label">Email</label>
+            <input class="form-control" type="email" name="email" placeholder="Email" required = '' autofocus>
+          </div>
+          <div class="form-group">
+            <label class="control-label">PASSWORD</label>
+            <input class="form-control" type="password" name="pass1"  required= '' placeholder="Password" id="p1">
+          </div>
+          <div class="form-group">
+                <label class="control-label">RE- ENTER PASSWORD</label>
+                <input class="form-control" type="password" name="pass2" required = '' placeholder="Password" id="p2">
+            </div>
+          <div class="form-group btn-container">
+            <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN UP</button>
+            <a class="btn btn-warning btn-block" href="{{url_for('login')}}" ><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</a>
+              
+           </div>
+</form>
+</div>
+          
+        
+      
+    </section>
+    <!-- Essential javascripts for application to work-->
+    <script src="{{url_for('static',filename = 'js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename = 'js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename = 'js/main.js')}}"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="{{url_for('static',filename = 'js/plugins/pace.min.js')}}"></script>
+    <script>
+        function validate(){
+            var p1 = document.getElementById('p1').value;
+            var p2 = document.getElementById('P2').value;
+
+            if (p1 != p2)
+            {
+                document.getElementById('p3').textContent = "Password mismatch"
+                return false;
+
+            } 
+            else{
+                return true;
+            }
+        }
+    </script>
+  </body>
+</html>

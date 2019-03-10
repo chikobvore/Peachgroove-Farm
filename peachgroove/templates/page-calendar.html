@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@pratikborsadiya">
+    <meta property="twitter:creator" content="@pratikborsadiya">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <title>PeachGrove Farm</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+
+    <link rel="stylesheet" type="text/css" href=" {{url_for('static' ,filename = 'css/main.css')}}">
+
+
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">PeachGrove Farm</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <li class="app-search">
+          <input class="app-search__input" type="search" placeholder="Search">
+          <button class="app-search__button"><i class="fa fa-search"></i></button>
+        </li>
+        <!--Notification Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+          <ul class="app-notification dropdown-menu dropdown-menu-right">
+            <li class="app-notification__title">You have 4 new notifications.</li>
+            <div class="app-notification__content">
+              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                  <div>
+                    <p class="app-notification__message">Lisa sent you a mail</p>
+                    <p class="app-notification__meta">2 min ago</p>
+                  </div></a></li>
+              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                  <div>
+                    <p class="app-notification__message">Mail server not working</p>
+                    <p class="app-notification__meta">5 min ago</p>
+                  </div></a></li>
+              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                  <div>
+                    <p class="app-notification__message">Transaction complete</p>
+                    <p class="app-notification__meta">2 days ago</p>
+                  </div></a></li>
+              <div class="app-notification__content">
+                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                    <div>
+                      <p class="app-notification__message">Lisa sent you a mail</p>
+                      <p class="app-notification__meta">2 min ago</p>
+                    </div></a></li>
+                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                    <div>
+                      <p class="app-notification__message">Mail server not working</p>
+                      <p class="app-notification__meta">5 min ago</p>
+                    </div></a></li>
+                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                    <div>
+                      <p class="app-notification__message">Transaction complete</p>
+                      <p class="app-notification__meta">2 days ago</p>
+                    </div></a></li>
+              </div>
+            </div>
+            <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+          </ul>
+        </li>
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <div>
+          <p class="app-sidebar__user-name">Mutambanengwe</p>
+          <p class="app-sidebar__user-designation">Farm Manager</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">New</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" data-toggle="modal" href="#addcrop"><i class="icon fa fa-circle-o"></i> Crop</a></li>
+            <li><a class="treeview-item" data-toggle="modal" href="#Activity"><i class="icon fa fa-circle-o"></i> Activity</a></li>
+          </ul>
+        </li>
+        <li><a class="app-menu__item active" href="#"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Calendar</span></a></li>
+        <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-files-o"></i><span class="app-menu__label">Finance Records</span></a></li>
+         <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Farm Register</span></a></li>
+         <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Farm Equipment</span></a></li>
+
+        
+      </ul>
+    </aside>
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-calendar"></i> Calendar</h1>
+          <p>Full Calander page for managing events</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="#">Calendar</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile row">
+            <div class="col-md-3">
+              <div id="external-events">
+                <h4 class="mb-4">Draggable Events</h4>
+                <div class="fc-event">My Event 1</div>
+                <div class="fc-event">My Event 2</div>
+                <div class="fc-event">My Event 3</div>
+                <div class="fc-event">My Event 4</div>
+                <div class="fc-event">My Event 5</div>
+                <p class="animated-checkbox mt-20">
+                  <label>
+                    <input id="drop-remove" type="checkbox"><span class="label-text">Remove after drop</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div id="calendar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal  for adding crops -->
+                <div class="modal fade" id="addcrop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">New crop</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{url_for('addcrop')}}" method="POST">
+                          <div class="form-group"> <!-- Full Name -->
+                <label for="full_name_id" class="control-label">crop</label>
+                <input type="text" class="form-control" id="full_name_id" name="crop" placeholder="" required="">
+              </div>  
+
+              <div class="form-group"> <!-- Street 1 -->
+                <label for="street1_id" class="control-label">Type</label>
+                <input type="text" class="form-control" id="street1_id" name="type1" placeholder="deere" required="">
+              </div>          
+                          
+              <div class="form-group"> <!-- Street 2 -->
+                <label for="street2_id" class="control-label">Dealer</label>
+                <input type="text" class="form-control" id="street2_id" name="dealer" placeholder="seed company" required="">
+              </div>  
+
+                <div class="form-group"> <!-- City-->
+                <label for="city_id" class="control-label">Quantity</label><p id="1"></p>
+                <input type="text" class="form-control" id="email_id" name="email" placeholder="..kg" required="">
+              </div>
+
+                <div class="form-group"> <!-- City-->
+                <label for="city_id" class="control-label">Date of Purchase</label>
+                <input type="Date" class="form-control"  name="date1" required="">
+              </div>
+
+                <div class="form-group"> <!-- City-->
+                <label for="city_id" class="control-label">Date Sown</label>
+                <input type="Date" class="form-control" id="phone_id" name="phone" placeholder="01/02/1945" required="">
+              </div>
+
+              <div class="form-group">
+                <label for="city_id" class="control-label">comment</label>
+                <input type="text" class="form-control" id="city_id" name="comment" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum." required="">
+              </div>
+                               
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                        <button class="btn btn-success" type="submit">Save changes</button>
+
+                    </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+                 <!-- Modal  for adding crops -->
+                <div class="modal fade" id="Activity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">New Activity</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{url_for('Activity')}}" method="POST">
+                          <div class="form-group"> <!-- Full Name -->
+                <label for="full_name_id" class="control-label">crop</label>
+                <select class="form-control">
+                  <option>crop1</option>
+                  <option>crop2</option>
+                </select>
+                
+              </div>  
+
+              <div class="form-group"> <!-- Street 1 -->
+                <label for="street1_id" class="control-label">Date</label>
+                <input type="date" class="form-control" id="street1_id" name="activity_date" placeholder="deere" required="">
+              </div>          
+                          
+              <div class="form-group"> <!-- Street 2 -->
+                <label for="street2_id" class="control-label">Activity</label>
+                <input type="text" class="form-control" id="street2_id" name="dealer" placeholder="" required="">
+              </div>  
+
+              <div class="form-group">
+                <label for="city_id" class="control-label">comment</label>
+                <input type="text" class="form-control" id="city_id" name="comment" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum." required="">
+              </div>
+                               
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                        <button class="btn btn-success" type="submit">Save changes</button>
+
+                    </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="{{url_for('static',filename ='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename= 'js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename = 'js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename= 'js/main.js')}}"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="{{url_for('static',filename= 'js/plugins/pace.min.js')}}"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/moment.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/jquery-ui.custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename = 'js/plugins/fullcalendar.min.js')}}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+      
+      	$('#external-events .fc-event').each(function() {
+      
+      		// store data so the calendar knows to render an event upon drop
+      		$(this).data('event', {
+      			title: $.trim($(this).text()), // use the element's text as the event title
+      			stick: true // maintain when user navigates (see docs on the renderEvent method)
+      		});
+      
+      		// make the event draggable using jQuery UI
+      		$(this).draggable({
+      			zIndex: 999,
+      			revert: true,      // will cause the event to go back to its
+      			revertDuration: 0  //  original position after the drag
+      		});
+      
+      	});
+      
+      	$('#calendar').fullCalendar({
+      		header: {
+      			left: 'prev,next today',
+      			center: 'title',
+      			right: 'month,agendaWeek,agendaDay'
+      		},
+      		editable: true,
+      		droppable: true, // this allows things to be dropped onto the calendar
+      		drop: function() {
+      			// is the "remove after drop" checkbox checked?
+      			if ($('#drop-remove').is(':checked')) {
+      				// if so, remove the element from the "Draggable Events" list
+      				$(this).remove();
+      			}
+      		}
+      	});
+      
+      
+      });
+    </script>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+    </script>
+  </body>
+</html>
