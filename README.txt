@@ -33,3 +33,15 @@ START YOUR FLASK SERVER BY TYPING
 	python home.py
 
 ................CONGRADULATIONS YOU HAVE SUCCESSFULLY SET peachgroove management system environment...................
+
+NEW FEATURES
+
+*GALLERY
+capture those best moments and save your files on a more secure platform
+
+*Records
+plan and review your activities on one robust platform
+
+*Security
+Your private information is secure from  intruders by means of Authentification
+
