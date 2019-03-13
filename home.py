@@ -280,8 +280,10 @@ def addcrop():
 			return render_template('index.html')
 
 if __name__ == '__main__':
+	import os
+	os.system('start mongod')
+	os.system('rundll32 url.dll,FileProtocolHandler http://127.0.0.1:5000/')
 	app.secret_key = 'super secret key'
 	app.config['SESSION_TYPE'] = 'filesystem'
-	app.debug = True
-	app.run() 
 	app.run(debug = True)
+	
