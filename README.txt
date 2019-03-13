@@ -23,4 +23,23 @@ STEP 6:
 Drag the shortcut icon  to any location of choice to start the application
 
 STEP 7:
+<<<<<<< HEAD
 double click shortcut to start the App
+=======
+START YOUR FLASK SERVER BY TYPING
+	python home.py
+
+................CONGRADULATIONS YOU HAVE SUCCESSFULLY SET peachgroove management system environment...................
+
+NEW FEATURES
+
+*GALLERY
+capture those best moments and save your files on a more secure platform
+
+*Records
+plan and review your activities on one robust platform
+
+*Security
+Your private information is secure from  intruders by means of Authentification
+
+>>>>>>> 06a0ae366856ebf03726d72ee896ee82e141fcab
